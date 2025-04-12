@@ -53,9 +53,10 @@ struct node * rootNode=(struct node *)malloc(sizeof(struct node));
   rootNode->rightChild=NULL;
   
   insert(0,rootNode);
-
+  insert(5,rootNode);
   printf("%d\n",rootNode->value);
   printf("%d\n",rootNode->leftChild->value);
+  printf("%d\n",rootNode->leftChild->rightChild->value);
 
 
 
