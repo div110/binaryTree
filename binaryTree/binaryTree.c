@@ -9,7 +9,7 @@ struct node {
   struct node * rightChild;
 };
 
-void insert(int newValue, struct node * rootNode){
+void insert(int32_t newValue, struct node * rootNode){
   
   bool end = false;
   struct node * currentNode=rootNode;
@@ -43,6 +43,27 @@ void insert(int newValue, struct node * rootNode){
     }
   }
 
+}
+void delete(int32_t deleteValue,struct * node rootNode){
+  struct * node previousNode = NULL;
+  struct * node currentNode = rootNode;
+  
+  if(currentNode->value == deleteValue){
+    
+    if(currentNode->leftChild!=NULL && currentNode->rightChild!=NULL){
+      currentNo 
+    }
+    else if (currentNode->leftChild != NULL || currentNode->rightChild != NULL){
+
+    }
+    else if (currentNode->leftChild == NULL && currentNode->rightChild == NULL){
+      if(previousNode->leftChild == currentNode){previousNode->leftChild = NULL;}
+      else if(previousNode->rightChild == currentNode){previousNode->rightChild = NULL;}
+      free(currentNode);
+    }
+
+
+  }
 }
 
 int main(){
