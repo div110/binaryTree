@@ -46,15 +46,22 @@ void insert(int32_t newValue, struct node * rootNode){
 }
 void delete(int32_t deleteValue,struct * node rootNode){
   struct * node previousNode = NULL;
-  struct * node currentNode = rootNode;
+  struct * node currentNode = rootNode; 
+  bool origin = false;
+  (previousNode->leftChild==currentNode) ? origin = true : origin = false;
   
   if(currentNode->value == deleteValue){
     
     if(currentNode->leftChild!=NULL && currentNode->rightChild!=NULL){
-      currentNo 
+       
     }
-    else if (currentNode->leftChild != NULL || currentNode->rightChild != NULL){
-
+    else if (currentNode->leftChild != NULL && currentNode->rightChild == NULL){
+      (origin) ? previousNode->leftChild = currentNode->leftChild : previousNode->rightChild = currentNode->leftChild;
+      free(currentNode);
+    }
+    else if (currentNode->rightChild != NULL && currentNode->leftChild == NULL){
+      (origin) ? previousNode->leftChild = currentNode->rightChild : previousNode->rightChild = currentNode->rightChild;
+      free(currentNode);
     }
     else if (currentNode->leftChild == NULL && currentNode->rightChild == NULL){
       if(previousNode->leftChild == currentNode){previousNode->leftChild = NULL;}
@@ -78,9 +85,6 @@ struct node * rootNode=(struct node *)malloc(sizeof(struct node));
   printf("%d\n",rootNode->value);
   printf("%d\n",rootNode->leftChild->value);
   printf("%d\n",rootNode->leftChild->rightChild->value);
-
-
-
 
 
   return 0;
