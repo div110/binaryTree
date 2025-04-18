@@ -3,11 +3,11 @@
 #include <stdint.h>
 
 struct node{
-  int value;
+  int32_t value;
   struct node * nextNode;
 };
 
-void insert(struct node * currentNode, int64_t value){
+void insert(struct node * currentNode, int32_t value){
   while(currentNode->nextNode != NULL){
     currentNode = currentNode->nextNode;
   }
@@ -24,13 +24,17 @@ void printList(struct node * currentNode){
 }
 }
 
-void delete(struct node * currentNode,int valueDelete){
-  struct node * previousNode = currentNode;
-  currentNode = currentNode->nextNode;
-  if(currentNode->value == valueDelete){
-    previousNode->nextNode = currentNode->nextNode;
-    free(currentNode);
+void deleteValue(struct node * currentNode,int32_t valueDelete){
+  if(currentNode->nextNode->value == valueDelete){
+    struct node * deleteNode = currentNode->nextNode;
+    currentNode->nextNode = currentNode->nextNode->nextNode;
+    free(deleteNode);
   }
+  else{
+    deleteValue(currentNode->nextNode,valueDelete);
+  }
+}
+void deleteNode(struct node * currentNode, int32_t){
 
 
 }
@@ -54,6 +58,12 @@ int main(){
   insert(headNode,67);
   insert(headNode,23634);
 
+
+  printList(headNode);
+  printf("\n");
+  printf("beg\n");
+  deleteValue(headNode,6);
+  printf("end\n");
   printList(headNode);
   printf("\n");
   return 0;
