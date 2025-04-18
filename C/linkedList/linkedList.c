@@ -15,35 +15,46 @@ void insert(struct node * currentNode, int64_t value){
   currentNode->nextNode->value = value;
 }
 
-void printList(struct node * head){
-  printf("%i",head->value);
-  if(head->nextNode!=NULL){
+void printList(struct node * currentNode){
+  printf("%d",currentNode->value);
+  if(currentNode->nextNode!=NULL){
     printf("->");
-    printList(head->nextNode);
+    printList(currentNode->nextNode);
 
 }
+}
+
+void delete(struct node * currentNode,int valueDelete){
+  struct node * previousNode = currentNode;
+  currentNode = currentNode->nextNode;
+  if(currentNode->value == valueDelete){
+    previousNode->nextNode = currentNode->nextNode;
+    free(currentNode);
+  }
+
+
 }
 
 int main(){
-  struct node * head;
-  head = (struct node *)malloc(sizeof(struct node));
-  if (head == NULL){
+  struct node * headNode;
+  headNode = (struct node *)malloc(sizeof(struct node));
+  if (headNode == NULL){
     printf("failed to allocate memory\n");
   }
-  insert(head,3);
-  insert(head,54023);
-  insert(head,123);
-  insert(head,6);
-  insert(head,9438520);
-  insert(head,14325);
-  insert(head,342);
-  insert(head,0);
-  insert(head,3425800);
-  insert(head,431);
-  insert(head,67);
-  insert(head,23634);
+  insert(headNode,3);
+  insert(headNode,54023);
+  insert(headNode,123);
+  insert(headNode,6);
+  insert(headNode,9438520);
+  insert(headNode,14325);
+  insert(headNode,342);
+  insert(headNode,0);
+  insert(headNode,3425800);
+  insert(headNode,431);
+  insert(headNode,67);
+  insert(headNode,23634);
 
-  printList(head);
+  printList(headNode);
   printf("\n");
   return 0;
 }
