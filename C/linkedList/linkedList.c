@@ -34,9 +34,15 @@ void deleteValue(struct node * currentNode,int32_t valueDelete){
     deleteValue(currentNode->nextNode,valueDelete);
   }
 }
-void deleteNode(struct node * currentNode, int32_t){
-
-
+void deleteNode(struct node * currentNode, int32_t numberOfNode){
+  struct node * previousNode = currentNode;
+  currentNode = currentNode->nextNode;
+  
+  if(numberOfNode == 0){
+    previousNode->nextNode = currentNode->nextNode;
+    free(currentNode);
+  }
+  else{deleteNode(currentNode, numberOfNode-1);}
 }
 
 int main(){
@@ -66,5 +72,9 @@ int main(){
   printf("end\n");
   printList(headNode);
   printf("\n");
+
+  deleteValue(headNode,0);
+  printList(headNode);
+
   return 0;
 }
