@@ -51,32 +51,9 @@ class Tree:
                     root = root.rightchild
 
     def remove(self, value_to_delete):
-    
-        root = self.root
-        if root == None:
-            print("tree is empty")
-            return
-        while True:
-            if value_to_delete < root.value and root.leftchild != None:
-                temp = node
-                root = temp
-                node = root.leftchild
-                print("went left")
-            elif value_to_delete > root.value and root.rightchild != None:
-                temp = node
-                root = temp
-                node = root.rightchild
-                print("went right")
-            
-            if node.value == value_to_delete:
-                if node.leftchild == None and node.rightchild == None:
-                    if node == root.leftchild:
-                        root.leftchild = None
-                    elif node == root.rightchild:
-                        root.rightchild = None
-                    print(value_to_delete,"deleted")
-                    return
-
+        pass
+    #all wrong
+    #will do through recursion
 
 
 
