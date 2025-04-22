@@ -50,11 +50,13 @@ class Tree:
                 else:
                     root = root.rightchild
 
-    def remove(self, value_to_delete):
-        pass
-    #all wrong
-    #will do through recursion
+    def remove(self, root, value_to_delete):
+        
 
+        if value_to_delete < root.value:
+            self.remove(root.leftchild, value_to_delete)
+        elif value_to_delete > root.value:
+            self.remove(root.rightchild, value_to_delete)
 
 
 
