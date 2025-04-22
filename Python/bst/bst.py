@@ -52,6 +52,15 @@ class Tree:
 
     def remove(self, root, value_to_delete):
         
+        if root.rightchild and root.rightchild.value == value_to_delete:
+            root.rightchild = None
+            return
+        elif root.leftchild and root.leftchild.value == value_to_delete:
+            root.leftchild = None
+            return
+
+        
+
 
         if value_to_delete < root.value:
             self.remove(root.leftchild, value_to_delete)
@@ -63,8 +72,8 @@ class Tree:
 class Node:
     def __init__(self,value, leftchild, rightchild):
         self.value = value
-        self.leftchild = leftchild
-        self.rightchild = rightchild
+        self.leftchild: Node | None = leftchild
+        self.rightchild: Node | None = rightchild
 
 strom = Tree()
 print(strom.root)
@@ -76,5 +85,5 @@ strom.find(1)
 strom.find(2)
 strom.find(3)
 
-strom.remove(3)
+strom.remove(strom.root, 3)
 strom.find(3)
